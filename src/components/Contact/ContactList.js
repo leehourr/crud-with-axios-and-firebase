@@ -10,7 +10,6 @@ import {
 } from "../../util/api";
 
 export const ContactList = ({ contact }) => {
-  const [openForm, setOpenForm] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [search, setSearch] = useState("");
   const [isInvalid, setIsinvalid] = useState();
@@ -27,9 +26,7 @@ export const ContactList = ({ contact }) => {
 
     setContacts(temp);
   }, [contact]);
-  const addFormHandler = () => {
-    setOpenForm((prev) => !prev);
-  };
+
 
   const searchHandler = async (e) => {
     e.preventDefault();
@@ -89,7 +86,6 @@ export const ContactList = ({ contact }) => {
     setContacts((prev) => {
       return [input, ...prev];
     });
-    setOpenForm(false);
   };
 
   const removeHandler = async (id) => {
@@ -157,28 +153,6 @@ export const ContactList = ({ contact }) => {
   return (
     <Fragment>
       {/* {isInvalid && "asda"} */}
-      <div className="flex flex-row space-x-14">
-        <input
-          type="text"
-          id="search"
-          name="search"
-          value={search}
-          onChange={searchHandler}
-          className="border-cyan-200  text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
-          placeholder="Search name"
-        />
-        <div className="text-cyan-200 border-solid rounded-lg border-transparent  hover:nm-inset-gray-800 p-0.5 nm-flat-gray-800 transition ease-in-out delay-150 duration-1000">
-          <button onClick={addFormHandler} className="w-8">
-            +
-          </button>
-        </div>
-      </div>
-
-      <div className="">
-        {openForm && (
-          <NewContact onSubmit={addContactHandler} onClose={addFormHandler} />
-        )}
-      </div>
       <Card className="text-white nm-flat-gray-800 max-w-lg w-full p-4 rounded-lg mt-6 ">
         <ul className="divide-y divide-slate-700">{content}</ul>
       </Card>

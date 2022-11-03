@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { BackDrop } from "../Ui/Backdrop";
 import { Card } from "../Ui/Card";
 
-export const NewContact = ({ onSubmit, onClose }) => {
+export const NewContact = ({ onClose, closeFrom }) => {
   const inputName = useRef();
   const inputNumber = useRef();
 
@@ -13,16 +13,6 @@ export const NewContact = ({ onSubmit, onClose }) => {
     inputName.current.focus();
   }, []);
 
-  const addContactHandler = (e) => {
-    e.preventDefault();
-
-    const name = inputName.current.value;
-    const number = inputNumber.current.value;
-    // console.log(inputName, number);
-    onSubmit(name, number);
-    inputName.current.value = "";
-    inputNumber.current.value = "";
-  };
   return (
     <Fragment>
       {ReactDOM.createPortal(
