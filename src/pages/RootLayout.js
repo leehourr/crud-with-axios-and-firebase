@@ -1,8 +1,7 @@
+import { memo } from "react";
 import { Outlet } from "react-router-dom";
 
-import MainNav from "../components/Ui/MainNav";
-
-function RootLayout() {
+export const RootLayout = () => {
   return (
     <>
       <div className="min-h-screen flex items-center align-text-top flex-col bg-gray-800 py-12 px-4 sm:px-6 lg:px-8 ">
@@ -11,10 +10,8 @@ function RootLayout() {
             CONTACT
           </h2>
         </div>
-      </div>
-      <main>
         <Outlet />
-      </main>
+      </div>
     </>
   );
-}
+};

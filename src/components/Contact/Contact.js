@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, memo } from "react";
 import { EditContact } from "./EditContact";
 import { Card } from "../Ui/Card";
 import edit from "../../assets/edit.svg";
 
-export const Contact = ({ id, name, number, onDelete, onEdit }) => {
+export const Contact = memo(({ id, name, number, onDelete, onEdit }) => {
   const [isEdit, setIsEdit] = useState();
 
   const updateHandler = (e) => {
@@ -45,4 +45,4 @@ export const Contact = ({ id, name, number, onDelete, onEdit }) => {
       </li>
     </Fragment>
   );
-};
+});

@@ -1,4 +1,11 @@
-import React, { Fragment, useState, useEffect, useCallback } from "react";
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useCallback,
+  memo,
+  useMemo,
+} from "react";
 import { Contact } from "./Contact";
 import { NewContact } from "../Contact/NewContact";
 import { Card } from "../Ui/Card";
@@ -9,19 +16,18 @@ import {
   removeContact,
   updateContact,
 } from "../../util/api";
+import { LoadingSpinner } from "../Ui/LoadingSpinner";
 
-export const ContactList = (props) => {
+export const ContactList = memo((props) => {
   const [openForm, setOpenForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [search, setSearch] = useState("");
   const [isInvalid, setIsinvalid] = useState();
+  const contact = [];
 
-  const getContacts = useCallback(async () => {
-    setIsLoading(true);
-    const data = await getAllContacts();
-    //console.log(data);
-    const contact = [];
+  useMemo(() => {
+    let data = props.contact;
     for (const key in data) {
       contact.push({
         id: key,
@@ -29,16 +35,8 @@ export const ContactList = (props) => {
         number: data[key].number,
       });
     }
-    // console.log(contact);
-    setContacts(contact);
-    // console.log(contact);
-
-    setIsLoading(false);
-  }, []);
-
-  useEffect(() => {
-    getContacts();
-  }, [getContacts]);
+    // getContacts();
+  }, [contact,props.contact]);
   const addFormHandler = () => {
     setOpenForm((prev) => !prev);
   };
@@ -134,9 +132,9 @@ export const ContactList = (props) => {
   };
   let content;
 
-  if (contacts.length > 0 && contacts !== []) {
-    content = contacts.map((data) => {
-      // console.log(data.id);
+  if (contact.length > 0 && contact !== []) {
+    content = contact.map((data) => {
+      console.log("passin down prop");
       return (
         <Contact
           key={data.id}
@@ -167,7 +165,11 @@ export const ContactList = (props) => {
   // }
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = (
+      <div className="mx-auto">
+        <LoadingSpinner />
+      </div>
+    );
   }
   return (
     <Fragment>
@@ -199,4 +201,4 @@ export const ContactList = (props) => {
       </Card>
     </Fragment>
   );
-};
+});

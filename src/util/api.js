@@ -1,4 +1,6 @@
 import axios from "axios";
+import { sleep } from './sleep';
+
 
 const api = axios.create({
   baseURL:
@@ -6,6 +8,7 @@ const api = axios.create({
 });
 
 export const getAllContacts = async () => {
+  await sleep(2000);
   const response = await api.get("/contacts.json").catch((e) => {
     errorHandler(e);
   });
@@ -50,9 +53,11 @@ function errorHandler(error) {
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
+    //throw new Response('Failed to fetch posts.', { status: 500 });
     console.log(error.response.data);
     console.log(error.response.status);
     console.log(error.response.headers);
+    throw new Response(error.response.data);
   } else if (error.request) {
     // The request was made but no response was received
     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
