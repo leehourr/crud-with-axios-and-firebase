@@ -1,42 +1,32 @@
-import React, {
-  Fragment,
-  useState,
-  useEffect,
-  useCallback,
-  memo,
-  useMemo,
-} from "react";
+import React, { Fragment, useState, useEffect, useCallback } from "react";
 import { Contact } from "./Contact";
 import { NewContact } from "../Contact/NewContact";
 import { Card } from "../Ui/Card";
 import {
-  getContact,
-  getAllContacts,
   AddContact,
+  getAllContacts,
   removeContact,
   updateContact,
 } from "../../util/api";
-import { LoadingSpinner } from "../Ui/LoadingSpinner";
 
-export const ContactList = memo((props) => {
+export const ContactList = ({ contact }) => {
   const [openForm, setOpenForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [search, setSearch] = useState("");
   const [isInvalid, setIsinvalid] = useState();
-  const contact = [];
 
-  useMemo(() => {
-    let data = props.contact;
-    for (const key in data) {
-      contact.push({
+  useEffect(() => {
+    const temp = [];
+    for (const key in contact) {
+      temp.push({
         id: key,
-        name: data[key].name,
-        number: data[key].number,
+        name: contact[key].name,
+        number: contact[key].number,
       });
     }
-    // getContacts();
-  }, [contact,props.contact]);
+
+    setContacts(temp);
+  }, [contact]);
   const addFormHandler = () => {
     setOpenForm((prev) => !prev);
   };
@@ -132,9 +122,9 @@ export const ContactList = memo((props) => {
   };
   let content;
 
-  if (contact.length > 0 && contact !== []) {
-    content = contact.map((data) => {
-      console.log("passin down prop");
+  if (contacts.length > 0 && contacts !== []) {
+    content = contacts.map((data) => {
+      // console.log(data.id);
       return (
         <Contact
           key={data.id}
@@ -164,13 +154,6 @@ export const ContactList = memo((props) => {
   //   content = <p>{error}</p>;
   // }
 
-  if (isLoading) {
-    content = (
-      <div className="mx-auto">
-        <LoadingSpinner />
-      </div>
-    );
-  }
   return (
     <Fragment>
       {/* {isInvalid && "asda"} */}
@@ -201,4 +184,4 @@ export const ContactList = memo((props) => {
       </Card>
     </Fragment>
   );
-});
+};

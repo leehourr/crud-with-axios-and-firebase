@@ -8,7 +8,7 @@ const api = axios.create({
 });
 
 export const getAllContacts = async () => {
-  await sleep(2000);
+ // await sleep(2000);
   const response = await api.get("/contacts.json").catch((e) => {
     errorHandler(e);
   });

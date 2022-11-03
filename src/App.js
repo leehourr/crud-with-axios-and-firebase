@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { AllContacts, loader as getAllContacts } from "./pages/AllContacts";
-import { AddContact } from "./pages/AddContact";
+import { AddContact, action as addContact } from "./pages/AddContact";
 import { EditContacts } from "./pages/EditContacts";
 import { RootLayout } from "./pages/RootLayout";
 import { PageNotFound } from "./pages/PageNotFound";
@@ -19,8 +19,9 @@ const router = createBrowserRouter([
         loader: getAllContacts,
       },
       {
-        path: "/add",
+        path: "add-contact",
         element: <AddContact />,
+        action: addContact,
       },
       {
         path: "/edit/:id",

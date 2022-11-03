@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect, useRef } from "react";
+import { Form } from "react-router-dom";
+
 import ReactDOM from "react-dom";
 import { BackDrop } from "../Ui/Backdrop";
 import { Card } from "../Ui/Card";
@@ -39,7 +41,12 @@ export const NewContact = ({ onSubmit, onClose }) => {
           >
             x
           </button>
-          <form className=" " onSubmit={addContactHandler}>
+          <Form
+            className=" "
+            // onSubmit={addContactHandler}
+            method="post"
+            action="/add-contact"
+          >
             <h2 className="block font-bold text-green-400 dark:text-green-400">
               Add contact
             </h2>
@@ -67,7 +74,7 @@ export const NewContact = ({ onSubmit, onClose }) => {
             >
               Add
             </button>
-          </form>
+          </Form>
         </Card>,
         document.getElementById("overlay-root")
       )}

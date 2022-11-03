@@ -25,7 +25,7 @@ export const AllContacts = () => {
     >
       <Await
         resolve={loaderData.contact}
-        errorElement={<p className="text-white ">Error loading blog posts.</p>}
+        errorElement={<p className="text-white ">Error loading contacts.</p>}
       >
         {(loaderData) => <ContactList contact={loaderData} />}
       </Await>
