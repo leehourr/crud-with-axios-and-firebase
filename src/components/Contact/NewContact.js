@@ -1,17 +1,27 @@
 import React, { Fragment, useEffect, useRef } from "react";
-import { Form } from "react-router-dom";
+import { Form, useFetcher } from "react-router-dom";
 
 import ReactDOM from "react-dom";
 import { BackDrop } from "../Ui/Backdrop";
 import { Card } from "../Ui/Card";
 
 export const NewContact = ({ onClose, closeFrom }) => {
+  const fetcher = useFetcher();
+
   const inputName = useRef();
   const inputNumber = useRef();
 
   useEffect(() => {
     inputName.current.focus();
   }, []);
+
+  function sumbitHandler(event) {
+    event.preventDefault();
+    const name = inputName.current.value;
+    const number = inputNumber.current.value;
+
+    fetcher.submit({ name, number }, { method: "post", action: "/add-contact" });
+  }
 
   return (
     <Fragment>
@@ -31,11 +41,11 @@ export const NewContact = ({ onClose, closeFrom }) => {
           >
             x
           </button>
-          <Form
+          <form
             className=" "
-            // onSubmit={addContactHandler}
-            method="post"
-            action="/add-contact"
+            onSubmit={sumbitHandler}
+            // method="post"
+            // action="/add-contact"
           >
             <h2 className="block font-bold text-green-400 dark:text-green-400">
               Add contact
@@ -64,7 +74,7 @@ export const NewContact = ({ onClose, closeFrom }) => {
             >
               Add
             </button>
-          </Form>
+          </form>
         </Card>,
         document.getElementById("overlay-root")
       )}

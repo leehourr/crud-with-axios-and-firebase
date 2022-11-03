@@ -6,32 +6,29 @@ import { AddContact, action as addContact } from "./pages/AddContact";
 import { EditContacts } from "./pages/EditContacts";
 import { RootLayout } from "./pages/RootLayout";
 import { PageNotFound } from "./pages/PageNotFound";
+import { NewContact } from "./components/Contact/NewContact";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <AllContacts />,
+    loader: getAllContacts,
     // errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <AllContacts />,
-        loader: getAllContacts,
-      },
       {
         path: "add-contact",
         element: <AddContact />,
         action: addContact,
       },
       {
-        path: "/edit/:id",
+        path: "edit/:id",
         element: <EditContacts />,
       },
-      {
-        path: "/*",
-        element: <PageNotFound />,
-      },
     ],
+  },
+  {
+    path: "/*",
+    element: <PageNotFound />,
   },
 ]);
 
