@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { AllContacts, loader as getAllContacts } from "./pages/AllContacts";
 import { AddContact, action as addContact } from "./pages/AddContact";
-import { EditContacts } from "./pages/EditContacts";
-import { RootLayout } from "./pages/RootLayout";
+import { EditContacts, action as updateContact } from "./pages/EditContacts";
+import { removeContact, action as deleteContact } from "./pages/removeContact";
+// import { RootLayout } from "./pages/RootLayout";
 import { PageNotFound } from "./pages/PageNotFound";
-import { NewContact } from "./components/Contact/NewContact";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +21,18 @@ const router = createBrowserRouter([
         action: addContact,
       },
       {
-        path: "edit/:id",
+        path: "edit/:id&:name&:number",
         element: <EditContacts />,
+        action: updateContact,
+        children: [
+     
+        ],
       },
     ],
+  },
+  {
+    path: "/remove/:id",
+    action: deleteContact,
   },
   {
     path: "/*",

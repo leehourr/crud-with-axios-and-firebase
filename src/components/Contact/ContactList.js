@@ -68,34 +68,7 @@ export const ContactList = ({ contact }) => {
     //console.log(contact);
   };
 
-  const removeHandler = async (id) => {
-    const removedData = await removeContact(id);
-    // console.log(removedData);
-    //  console.log(id);
-    setContacts((prev) => {
-      return prev.filter((contact) => contact.id !== id);
-    });
-  };
 
-  const editHandler = async (id, updated) => {
-    const name = updated.input_name;
-    const number = updated.input_number;
-    const update = { name, number };
-    const isValid = validateInput(name, number);
-    if (!isValid) {
-      // setIsinvalid(true);
-      return;
-    }
-    // console.log(update);
-    const response = await updateContact(id, update);
-    // console.log("updated");
-    // console.log(response);
-
-    const updatedData = contacts.map((data) => {
-      return data.id === id ? { id, ...response } : data;
-    });
-    setContacts(updatedData);
-  };
   let content;
 
   if (contacts.length > 0 && contacts !== []) {
@@ -107,28 +80,12 @@ export const ContactList = ({ contact }) => {
           id={data.id}
           name={data.name}
           number={data.number}
-          onDelete={removeHandler}
-          onEdit={editHandler.bind(null, data.id)}
+          //onDelete={removeHandler}
+         // onEdit={editHandler.bind(null, data.id)}
         />
       );
     });
   }
-
-  const validateInput = (name, number) => {
-    if (
-      name.trim().length < 1 ||
-      number.trim().length < 7 ||
-      name === "" ||
-      number === ""
-    ) {
-      // setIsinvalid(true);
-      return false;
-    }
-    return true;
-  };
-  // if (error) {
-  //   content = <p>{error}</p>;
-  // }
 
   return (
     <Fragment>

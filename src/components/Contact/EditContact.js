@@ -2,19 +2,12 @@ import React, { Fragment, useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Card } from "../Ui/Card";
 import { BackDrop } from "../Ui/Backdrop";
-import { useNavigate } from "react-router-dom";
+import { Form, useFormAction, useNavigate } from "react-router-dom";
 
-export const EditContact = ({
-  name,
-  number,
-  onClose,
-  onDelete,
-  onEdit,
-  closeForm,
-}) => {
+export const EditContact = ({ id, name, number, onClose }) => {
+  const navigate = useNavigate();
   const inputName = useRef();
   const inputNumber = useRef();
-  const [isOpen, setIsOpen] = useState(true);
   // const input = [];
   // const uInput = input.concat(name, number);
 
@@ -22,17 +15,8 @@ export const EditContact = ({
     inputName.current.focus();
   }, []);
 
-  const editContactHandler = (e) => {
-    e.preventDefault();
-    const uName = inputName.current.value;
-    const uNumber = inputNumber.current.value;
-    let input_name = "";
-    let input_number = "";
-    uName !== "" ? (input_name = uName) : (input_name = name);
-    uNumber !== "" ? (input_number = uNumber) : (input_number = number);
-    console.log(input_name, input_number);
-    onEdit({ input_name, input_number });
-    onClose();
+  const deleteContact = () => {
+    //useFormAction(`/edit/${id}/remove`);
   };
 
   //   let slide_in_out = "";
@@ -55,7 +39,7 @@ export const EditContact = ({
                 x
               </button>
             </div>
-            <form onSubmit={editContactHandler}>
+            <Form method="post" action={`/edit/${id}&${name}&${number}`}>
               <h2 className="block font-bold text-green-400 dark:text-green-400 ">
                 Edit contact
               </h2>
@@ -70,8 +54,8 @@ export const EditContact = ({
               />
               <input
                 type="text"
-                id="password"
-                name="password"
+                id="number"
+                name="number"
                 ref={inputNumber}
                 defaultValue={number}
                 className="border-cyan-200 mb-6 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 dark:border-cyan-200"
@@ -84,13 +68,14 @@ export const EditContact = ({
               >
                 Edit
               </button>
-            </form>
-            <button
-              className="text-cyan-200 bg-red-400 w-full mt-3.5 mx-auto border-solid rounded-lg border-transparent  hover:nm-inset-red-900 px-2 nm-flat-red-900 transition ease-in-out delay-150 duration-1000"
-              onClick={onDelete}
-            >
-              delete
-            </button>
+              <button
+                className="text-cyan-200 bg-red-400 w-full mt-3.5 mx-auto border-solid rounded-lg border-transparent  hover:nm-inset-red-900 px-2 nm-flat-red-900 transition ease-in-out delay-150 duration-1000"
+                //  onClick={deleteContact}
+                formAction={`/remove/${id}`}
+              >
+                delete
+              </button>
+            </Form>
           </div>
         </Card>,
         document.getElementById("overlay-root")

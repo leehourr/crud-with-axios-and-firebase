@@ -1,32 +1,20 @@
 import React, { Fragment, useState, memo, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { EditContact } from "./EditContact";
 import { Card } from "../Ui/Card";
 import edit from "../../assets/edit.svg";
 
 export const Contact = memo(({ id, name, number, onDelete, onEdit }) => {
-  const [isEdit, setIsEdit] = useState();
-
+  const navigate = useNavigate();
   const updateHandler = (e) => {
     // e.preventDefault();
-    setIsEdit(true);
+    let uName = name;
+    // console.log(uName.trim());
+    navigate(`/edit/${id}&${name}&${number}`);
   };
 
-  const closeHandler = () => {
-    setIsEdit(null);
-  };
-  
   return (
     <Fragment>
-      {isEdit && (
-        <EditContact
-          onClose={closeHandler}
-          // closeForm={closeHandler}
-          onDelete={onDelete.bind(null, id)}
-          onEdit={onEdit}
-          name={name}
-          number={number}
-        />
-      )}
       <li>
         <Card className=" text-center">
           <div className="py-5 px-1 flex flex-row ">
