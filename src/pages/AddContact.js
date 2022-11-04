@@ -11,15 +11,19 @@ import { NewContact } from "../components/Contact/NewContact";
 import { AddContact as addData } from "../util/api";
 
 export const AddContact = ({ onClose }) => {
-  //const navigation = useNavigation();
+  const navigate = useNavigate();
   // console.log("state");
   // console.log(navigation.state);
   // if (navigation.state === "submitting") {
   //   setOpenForm(false);
   //   return;
   // }
+  const closeForm = () => {
+    console.log("asda");
+    navigate("/");
+  };
 
-  return <NewContact />;
+  return <NewContact onClose={closeForm} />;
 };
 
 export const action = async ({ request }) => {
@@ -30,6 +34,10 @@ export const action = async ({ request }) => {
   const name = data.get("name");
   const number = data.get("number");
   const contact = { name, number };
-  await addData(contact);
+  const newContact = await addData(contact);
+  window.scrollTo({
+    top: window.innerHeight+1000,
+    behavior: 'smooth',
+  });
   return redirect("/");
 };

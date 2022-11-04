@@ -3,7 +3,6 @@ import { Contact } from "./Contact";
 import { NewContact } from "../Contact/NewContact";
 import { Card } from "../Ui/Card";
 import {
-  AddContact,
   getAllContacts,
   removeContact,
   updateContact,
@@ -67,25 +66,6 @@ export const ContactList = ({ contact }) => {
     }
 
     //console.log(contact);
-  };
-
-  const addContactHandler = async (name, number) => {
-    console.log(name, number);
-
-    const input = {
-      name,
-      number,
-    };
-    const addedData = await AddContact(input);
-    //  console.log("ADDED dad");
-    // console.log(addedData.name);
-    input.id = addedData.name;
-    //   console.log(input);
-    //const data = [];
-
-    setContacts((prev) => {
-      return [input, ...prev];
-    });
   };
 
   const removeHandler = async (id) => {

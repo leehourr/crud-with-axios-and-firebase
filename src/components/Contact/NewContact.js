@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { BackDrop } from "../Ui/Backdrop";
 import { Card } from "../Ui/Card";
 
-export const NewContact = ({ onClose, closeFrom }) => {
+export const NewContact = ({ onClose }) => {
   const fetcher = useFetcher();
 
   const inputName = useRef();
@@ -20,7 +20,10 @@ export const NewContact = ({ onClose, closeFrom }) => {
     const name = inputName.current.value;
     const number = inputNumber.current.value;
 
-    fetcher.submit({ name, number }, { method: "post", action: "/add-contact" });
+    fetcher.submit(
+      { name, number },
+      { method: "post", action: "/add-contact" }
+    );
   }
 
   return (

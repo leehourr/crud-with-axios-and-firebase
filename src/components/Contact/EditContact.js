@@ -45,7 +45,7 @@ export const EditContact = ({
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <Card className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden bg-gray-800 p-6 rounded-lg animate-in fade-in   duration-500">
+        <Card className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden bg-gray-800 p-6 rounded-lg animate-in fade-in   duration-500">
           <div className="mx-autor">
             <div className="">
               <button

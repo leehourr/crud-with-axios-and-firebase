@@ -1,4 +1,4 @@
-import React, { Fragment, useState, memo } from "react";
+import React, { Fragment, useState, memo, useMemo } from "react";
 import { EditContact } from "./EditContact";
 import { Card } from "../Ui/Card";
 import edit from "../../assets/edit.svg";
@@ -14,7 +14,7 @@ export const Contact = memo(({ id, name, number, onDelete, onEdit }) => {
   const closeHandler = () => {
     setIsEdit(null);
   };
-
+  
   return (
     <Fragment>
       {isEdit && (
