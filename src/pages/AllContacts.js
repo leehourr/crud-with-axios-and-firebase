@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, useState } from "react";
+import React, { Fragment, Suspense, useEffect, useState } from "react";
 import {
   defer,
   useLoaderData,
@@ -15,13 +15,61 @@ import { getAllContacts } from "../util/api";
 import { AddContact } from "./AddContact";
 
 export const AllContacts = () => {
+  const [contacts, setContacts] = useState([]);
+  const [search, setSearch] = useState("");
   const loaderData = useLoaderData();
   const path = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setContacts(loaderData);
+  }, [loaderData]);
+
   const addFormHandler = () => {
-    console.log("form opened");
+   // console.log("form opened");
     navigate("/add-contact");
+  };
+
+  const searchHandler = async (e) => {
+    e.preventDefault();
+    const input = e.target.value;
+ //   console.log(input);
+    setSearch(input);
+    //console.log(uName[0]);
+    const data = await getAllContacts();
+    //   console.log("search");
+
+    //   console.log(data);
+    const contact = [];
+    for (const key in data) {
+      contact.push({
+        id: key,
+        name: data[key].name,
+        number: data[key].number,
+      });
+    }
+    //  console.log(contact);
+    setContacts(contact);
+    //
+    const search_contact = [];
+    // const contact = data.map((n) => {
+    //   return { id: n.id, name: n.name, number: n.number };
+    // });
+
+    for (let i = 0; i < contact.length; i++) {
+      const c_name = contact[i].name.toLowerCase();
+      const u_input = input.toLowerCase();
+      if (c_name.includes(u_input.trim()) && u_input !== "") {
+        search_contact.push(contact[i]);
+     //   console.log(search_contact);
+      }
+    }
+    if (input !== "" && search_contact) {
+      setContacts(search_contact);
+    }
+    // console.log("match");
+
+    // console.log(contact);
   };
   // console.log("load data from page");
 
@@ -38,8 +86,8 @@ export const AllContacts = () => {
           type="text"
           id="search"
           name="search"
-          //  value={search}
-          //    onChange={searchHandler}
+          value={search}
+          onChange={searchHandler}
           className="border-cyan-200  text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
           placeholder="Search name"
         />
@@ -66,7 +114,9 @@ export const AllContacts = () => {
           resolve={loaderData.contact}
           errorElement={<p className="text-white ">Error loading contacts.</p>}
         >
-          {(loaderData) => <ContactList contact={loaderData} />}
+          {(loaderData) => (
+            <ContactList contact={loaderData} searchContact={contacts} />
+          )}
         </Await>
       </Suspense>
     </div>

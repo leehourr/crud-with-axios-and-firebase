@@ -19,7 +19,7 @@ export const AddContact = ({ onClose }) => {
   //   return;
   // }
   const closeForm = () => {
-    console.log("asda");
+   // console.log("asda");
     navigate("/");
   };
 
