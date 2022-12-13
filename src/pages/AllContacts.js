@@ -102,7 +102,7 @@ export const AllContacts = () => {
         fallback={
           <Card
             className={
-              "text-white nm-flat-gray-800 max-w-lg w-full p-4 rounded-lg mt-6 "
+              "text-white nm-flat-zinc-800 max-w-lg w-full p-4 rounded-lg mt-6 "
             }
           >
             <LoadingSpinner />
