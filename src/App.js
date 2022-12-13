@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AllContacts, loader as getAllContacts } from "./pages/AllContacts";
 import { AddContact, action as addContact } from "./pages/AddContact";
 import { EditContacts, action as updateContact } from "./pages/EditContacts";
-import { removeContact, action as deleteContact } from "./pages/removeContact";
+import { action as deleteContact } from "./pages/removeContact";
 // import { RootLayout } from "./pages/RootLayout";
 import { PageNotFound } from "./pages/PageNotFound";
 
