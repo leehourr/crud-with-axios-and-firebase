@@ -24,9 +24,7 @@ const router = createBrowserRouter([
         path: "edit/:id&:name&:number",
         element: <EditContacts />,
         action: updateContact,
-        children: [
-     
-        ],
+        children: [],
       },
     ],
   },

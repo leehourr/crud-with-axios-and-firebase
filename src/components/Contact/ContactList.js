@@ -46,8 +46,8 @@ export const ContactList = ({ contact, searchContact }) => {
   return (
     <Fragment>
       {/* {isInvalid && "asda"} */}
-      <Card className="text-white nm-flat-gray-800 max-w-lg w-full p-4 rounded-lg mt-6 ">
-        <ul className="divide-y divide-slate-700">{content}</ul>
+      <Card className="text-white nm-flat-zinc-800 max-w-lg w-full p-4 rounded-lg mt-6 ">
+        <ul className="divide-y divide-cyan-300">{content}</ul>
       </Card>
     </Fragment>
   );

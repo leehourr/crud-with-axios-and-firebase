@@ -29,12 +29,12 @@ export const EditContact = ({ id, name, number, onClose }) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <Card className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden bg-gray-800 p-6 rounded-lg animate-in fade-in   duration-500">
+        <Card className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden bg-zinc-800 p-6 rounded-lg animate-in fade-in   duration-500">
           <div className="mx-autor">
             <div className="">
               <button
                 onClick={onClose}
-                className="text-cyan-200 ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-gray-800 px-3.5  nm-flat-gray-800"
+                className="text-cyan-200 ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-3.5  nm-flat-zinc-800"
               >
                 x
               </button>
@@ -49,7 +49,7 @@ export const EditContact = ({ id, name, number, onClose }) => {
                 name="name"
                 ref={inputName}
                 defaultValue={name}
-                className="border-cyan-200 mb-6 mt-4 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
+                className="outline-none nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 mb-6 mt-4 text-white placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
                 placeholder="Name"
               />
               <input
@@ -58,22 +58,22 @@ export const EditContact = ({ id, name, number, onClose }) => {
                 name="number"
                 ref={inputNumber}
                 defaultValue={number}
-                className="border-cyan-200 mb-6 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 dark:border-cyan-200"
+                className="outline-none nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 mb-6 text-white placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 "
                 placeholder="Password"
               />
               <button
                 type="submit"
-                className="text-cyan-200 w-full mx-auto border-solid rounded-lg border-transparent  hover:nm-inset-gray-800 px-2 nm-flat-gray-800 transition ease-in-out delay-150 duration-1000"
+                className="text-cyan-200 w-full mx-auto border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-2 nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000"
                 //  onClick=}
               >
                 Edit
               </button>
               <button
-                className="text-cyan-200 bg-red-400 w-full mt-3.5 mx-auto border-solid rounded-lg border-transparent  hover:nm-inset-red-900 px-2 nm-flat-red-900 transition ease-in-out delay-150 duration-1000"
+                className="text-red-400 nm-flat-zinc-800 w-full mt-3.5 mx-auto border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-2 transition ease-in-out delay-150 duration-1000"
                 //  onClick={deleteContact}
                 formAction={`/remove/${id}`}
               >
-                delete
+                Delete
               </button>
             </Form>
           </div>

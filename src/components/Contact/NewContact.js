@@ -35,12 +35,12 @@ export const NewContact = ({ onClose }) => {
       {ReactDOM.createPortal(
         <Card
           className={
-            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden    bg-gray-800 p-6 rounded-lg"
+            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden    bg-zinc-800 p-6 rounded-lg"
           }
         >
           <button
             onClick={onClose}
-            className="text-cyan-200 ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-gray-800 px-3.5  nm-flat-gray-800 "
+            className="text-cyan-200 ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-3.5  nm-flat-zinc-800 "
           >
             x
           </button>
@@ -59,7 +59,7 @@ export const NewContact = ({ onClose }) => {
               ref={inputName}
               name="name"
               required
-              className="border-cyan-200 mb-6 mt-4 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
+              className="outline-none mb-6 mt-4 nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
               placeholder="Name"
             />
             <input
@@ -68,12 +68,12 @@ export const NewContact = ({ onClose }) => {
               name="number"
               ref={inputNumber}
               required
-              className="border-cyan-200 mb-6 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 dark:border-cyan-200"
+              className="outline-none nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 mb-6 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 "
               placeholder="Password"
             />
             <button
               type="Submit"
-              className="text-cyan-200 text-right ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-gray-800 p-0.5 nm-flat-gray-800 transition ease-in-out delay-150 duration-1000"
+              className="text-cyan-200 text-right ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000"
             >
               Add
             </button>

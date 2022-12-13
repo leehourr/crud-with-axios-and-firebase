@@ -24,7 +24,7 @@ export const Contact = memo(({ id, name, number, onDelete, onEdit }) => {
             </div>
             <button
               onClick={updateHandler}
-              className=" h-13 w-12 mr-2 nm-flat-gray-800 hover:nm-inset-gray-800 active:nm-inset-gray-800 cursor-pointer  ml-auto  rounded-md"
+              className=" h-13 w-12 mr-2 nm-flat-zinc-800 hover:nm-inset-zinc-800 active:nm-inset-zinc-800 cursor-pointer  ml-auto  rounded-md"
             >
               <img src={edit} alt="edit" />
             </button>

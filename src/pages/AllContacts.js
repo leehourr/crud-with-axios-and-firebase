@@ -75,23 +75,23 @@ export const AllContacts = () => {
 
   //console.log(loaderData);
   return (
-    <div className="min-h-screen flex items-center align-text-top flex-col bg-gray-800 py-12 px-4 sm:px-6 lg:px-8 transition-all duration-75 ">
+    <div className="min-h-screen flex items-center align-text-top flex-col bg-zinc-800 py-12 px-4 sm:px-6 lg:px-8 transition-all duration-75 ">
       <div className="max-w-fit space-y-8 p-0">
-        <h2 className="mt-6 mb-10 text-center text-3xl font-extrabold text-cyan-400 cursor-pointer">
-          CONTACT
+        <h2 className=" mb-10 text-center text-3xl font-extrabold text-cyan-400 cursor-pointer">
+          CONTACT 
         </h2>
       </div>
-      <div className="flex flex-row space-x-14">
+      <div className="flex w-full flex-row space-x-14">
         <input
           type="text"
           id="search"
           name="search"
           value={search}
           onChange={searchHandler}
-          className="border-cyan-200  text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
-          placeholder="Search name"
+          className="w-full outline-none nm-inset-zinc-800 text-black placeholder-grey-400 text-sm rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200"
+          placeholder="Search name" 
         />
-        <div className="text-cyan-200 border-solid rounded-lg border-transparent  hover:nm-inset-gray-800 p-0.5 nm-flat-gray-800 transition ease-in-out delay-150 duration-1000">
+        <div className="text-cyan-200 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 text-lg nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000">
           <button onClick={addFormHandler} className="w-8">
             +
           </button>
