@@ -87,7 +87,7 @@ export const AllContacts = () => {
           name="search"
           value={search}
           onChange={searchHandler}
-          className="w-full outline-none nm-inset-zinc-800 text-black placeholder-grey-400 text-sm sm:text-lg rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200"
+          className="w-full outline-none nm-inset text-black placeholder-grey-400 text-sm sm:text-lg rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200"
           placeholder="Search name"
         />
         <div className="text-cyan-200 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 text-lg nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000">
