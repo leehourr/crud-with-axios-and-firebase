@@ -29,12 +29,12 @@ export const EditContact = ({ id, name, number, onClose }) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <Card className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden bg-zinc-800 p-6 rounded-lg animate-in fade-in   duration-500">
+        <Card className="fixed w-56 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden bg-zinc-800 p-6 rounded-lg animate-in fade-in   duration-500">
           <div className="mx-autor">
             <div className="">
               <button
                 onClick={onClose}
-                className="text-cyan-200 ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-3.5  nm-flat-zinc-800"
+                className="text-cyan-200 block ml-auto border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-3.5  nm-flat-zinc-800"
               >
                 x
               </button>

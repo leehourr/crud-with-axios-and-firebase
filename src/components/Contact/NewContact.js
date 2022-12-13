@@ -35,12 +35,12 @@ export const NewContact = ({ onClose }) => {
       {ReactDOM.createPortal(
         <Card
           className={
-            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden    bg-zinc-800 p-6 rounded-lg"
+            "absolute top-1/2 left-1/2 w-56  -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden flex flex-col justify-center    bg-zinc-800 p-6 rounded-lg"
           }
         >
           <button
             onClick={onClose}
-            className="text-cyan-200 ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-3.5  nm-flat-zinc-800 "
+            className="text-cyan-200 block ml-auto border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-3.5  nm-flat-zinc-800 "
           >
             x
           </button>
@@ -73,7 +73,7 @@ export const NewContact = ({ onClose }) => {
             />
             <button
               type="Submit"
-              className="text-cyan-200 text-right ml-36 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000"
+              className="text-cyan-200 block ml-auto  border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000"
             >
               Add
             </button>
