@@ -75,20 +75,20 @@ export const AllContacts = () => {
 
   //console.log(loaderData);
   return (
-    <div className="min-h-screen flex items-center align-text-top flex-col bg-zinc-800 py-12 px-4 sm:px-6 lg:px-8 transition-all duration-75 ">
+    <div className="min-h-screen flex items-center align-text-top flex-col bg-zinc-800 py-6 sm:py-10 px-4 sm:px-6 lg:px-8 transition-all duration-75 ">
       <div className="max-w-fit space-y-8 p-0">
-        <h2 className=" mb-10 text-center text-3xl font-extrabold text-cyan-400 cursor-pointer">
+        <h2 className=" mb-6 sm:mb-10 text-center text-3xl font-extrabold text-cyan-400 cursor-pointer">
           CONTACT 
         </h2>
       </div>
-      <div className="flex w-full flex-row space-x-14">
+      <div className="flex max-w-lg w-full flex-row space-x-14">
         <input
           type="text"
           id="search"
           name="search"
           value={search}
           onChange={searchHandler}
-          className="w-full outline-none nm-inset-zinc-800 text-black placeholder-grey-400 text-sm rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200"
+          className="w-full outline-none nm-inset-zinc-800 text-black placeholder-grey-400 text-sm sm:text-lg rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200"
           placeholder="Search name" 
         />
         <div className="text-cyan-200 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 text-lg nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000">
