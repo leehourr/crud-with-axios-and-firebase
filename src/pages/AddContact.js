@@ -1,12 +1,5 @@
-import React, { Fragment, useState } from "react";
-import {
-  Navigate,
-  redirect,
-  useActionData,
-  useLocation,
-  useNavigate,
-  useNavigation,
-} from "react-router-dom";
+import React from "react";
+import { redirect, useNavigate } from "react-router-dom";
 import { NewContact } from "../components/Contact/NewContact";
 import { AddContact as addData } from "../util/api";
 
@@ -19,7 +12,7 @@ export const AddContact = ({ onClose }) => {
   //   return;
   // }
   const closeForm = () => {
-   // console.log("asda");
+    // console.log("asda");
     navigate("/");
   };
 
@@ -35,9 +28,10 @@ export const action = async ({ request }) => {
   const number = data.get("number");
   const contact = { name, number };
   const newContact = await addData(contact);
+  console.log(newContact);
   window.scrollTo({
-    top: window.innerHeight+1000,
-    behavior: 'smooth',
+    top: window.innerHeight + 1000,
+    behavior: "smooth",
   });
   return redirect("/");
 };

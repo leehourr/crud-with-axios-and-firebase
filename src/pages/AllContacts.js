@@ -1,10 +1,9 @@
-import React, { Fragment, Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import {
   defer,
   useLoaderData,
   Await,
   Outlet,
-  useLocation,
   useNavigate,
 } from "react-router-dom";
 
@@ -12,13 +11,13 @@ import { ContactList } from "../components/Contact/ContactList";
 import { Card } from "../components/Ui/Card";
 import { LoadingSpinner } from "../components/Ui/LoadingSpinner";
 import { getAllContacts } from "../util/api";
-import { AddContact } from "./AddContact";
+// import { AddContact } from "./AddContact";
 
 export const AllContacts = () => {
   const [contacts, setContacts] = useState([]);
   const [search, setSearch] = useState("");
   const loaderData = useLoaderData();
-  const path = useLocation();
+  // const path = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,14 +25,14 @@ export const AllContacts = () => {
   }, [loaderData]);
 
   const addFormHandler = () => {
-   // console.log("form opened");
+    // console.log("form opened");
     navigate("/add-contact");
   };
 
   const searchHandler = async (e) => {
     e.preventDefault();
     const input = e.target.value;
- //   console.log(input);
+    //   console.log(input);
     setSearch(input);
     //console.log(uName[0]);
     const data = await getAllContacts();
@@ -61,7 +60,7 @@ export const AllContacts = () => {
       const u_input = input.toLowerCase();
       if (c_name.includes(u_input.trim()) && u_input !== "") {
         search_contact.push(contact[i]);
-     //   console.log(search_contact);
+        //   console.log(search_contact);
       }
     }
     if (input !== "" && search_contact) {
@@ -78,7 +77,7 @@ export const AllContacts = () => {
     <div className="min-h-screen flex items-center align-text-top flex-col bg-zinc-800 py-6 sm:py-10 px-4 sm:px-6 lg:px-8 transition-all duration-75 ">
       <div className="max-w-fit space-y-8 p-0">
         <h2 className=" mb-6 sm:mb-10 text-center text-3xl font-extrabold text-cyan-400 cursor-pointer">
-          CONTACT 
+          CONTACT
         </h2>
       </div>
       <div className="flex max-w-lg w-full flex-row space-x-14">
@@ -89,7 +88,7 @@ export const AllContacts = () => {
           value={search}
           onChange={searchHandler}
           className="w-full outline-none nm-inset-zinc-800 text-black placeholder-grey-400 text-sm sm:text-lg rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200"
-          placeholder="Search name" 
+          placeholder="Search name"
         />
         <div className="text-cyan-200 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 text-lg nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000">
           <button onClick={addFormHandler} className="w-8">

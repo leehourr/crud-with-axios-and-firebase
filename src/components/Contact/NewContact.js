@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useRef } from "react";
-import { Form, useFetcher } from "react-router-dom";
+import {  useFetcher } from "react-router-dom";
 
 import ReactDOM from "react-dom";
 import { BackDrop } from "../Ui/Backdrop";
@@ -59,7 +59,7 @@ export const NewContact = ({ onClose }) => {
               ref={inputName}
               name="name"
               required
-              className="outline-none mb-6 mt-4 nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
+              className="outline-none mb-6 mt-4 nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 text-white placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 focus:border-cyan-200"
               placeholder="Name"
             />
             <input
@@ -68,7 +68,7 @@ export const NewContact = ({ onClose }) => {
               name="number"
               ref={inputNumber}
               required
-              className="outline-none nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 mb-6 text-black placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 "
+              className="outline-none nm-inset-zinc-800 px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 mb-6 text-white placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 "
               placeholder="Password"
             />
             <button

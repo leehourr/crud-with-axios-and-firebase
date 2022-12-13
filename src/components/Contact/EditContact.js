@@ -1,11 +1,11 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
+import React, { Fragment, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Card } from "../Ui/Card";
 import { BackDrop } from "../Ui/Backdrop";
-import { Form, useFormAction, useNavigate } from "react-router-dom";
+import { Form } from "react-router-dom";
 
 export const EditContact = ({ id, name, number, onClose }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const inputName = useRef();
   const inputNumber = useRef();
   // const input = [];
@@ -15,9 +15,9 @@ export const EditContact = ({ id, name, number, onClose }) => {
     inputName.current.focus();
   }, []);
 
-  const deleteContact = () => {
-    //useFormAction(`/edit/${id}/remove`);
-  };
+  // const deleteContact = () => {
+  //   //useFormAction(`/edit/${id}/remove`);
+  // };
 
   //   let slide_in_out = "";
 

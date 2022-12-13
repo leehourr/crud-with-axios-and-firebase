@@ -1,11 +1,11 @@
-import React, { Fragment, useState, useEffect, useCallback } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Contact } from "./Contact";
-import { NewContact } from "../Contact/NewContact";
+// import { NewContact } from "../Contact/NewContact";
 import { Card } from "../Ui/Card";
 
 export const ContactList = ({ contact, searchContact }) => {
   const [contacts, setContacts] = useState([]);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
   useEffect(() => {
     const temp = [];

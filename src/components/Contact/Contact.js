@@ -1,6 +1,5 @@
-import React, { Fragment, useState, memo, useMemo } from "react";
+import React, { Fragment, memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { EditContact } from "./EditContact";
 import { Card } from "../Ui/Card";
 import edit from "../../assets/edit.svg";
 
@@ -8,7 +7,6 @@ export const Contact = memo(({ id, name, number, onDelete, onEdit }) => {
   const navigate = useNavigate();
   const updateHandler = (e) => {
     // e.preventDefault();
-    let uName = name;
     // console.log(uName.trim());
     navigate(`/edit/${id}&${name}&${number}`);
   };
