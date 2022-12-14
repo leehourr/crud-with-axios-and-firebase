@@ -59,7 +59,7 @@ export const EditContact = ({ id, name, number, onClose }) => {
                 ref={inputNumber}
                 defaultValue={number}
                 className="outline-none nm-inset px-4 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 mb-6 text-white placeholder-grey-400 text-sm rounded-lg block w-full p-1.5 "
-                placeholder="Password"
+                placeholder="Number"
               />
               <button
                 type="submit"
