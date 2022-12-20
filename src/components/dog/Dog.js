@@ -5,40 +5,18 @@ import { useState, useRef, useMemo } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
 
-export const Dog = () => {
-  return (
-    <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
-      <ambientLight intensity={0.7} />
-      <PresentationControls
-        speed={1.5}
-        global
-        polar={[-Math.PI / 4, Math.PI / 4, 0]}
-      >
-        <group
-          position={[0, 1, 0]}
-          rotation-z={0}
-          rotation-y={-0.8}
-          rotation-x={0.8}
-        >
-          <Scene />
-        </group>
-      </PresentationControls>
-    </Canvas>
-  );
-};
-
 const Box = ({ position }) => {
   const [isSlowDown, setIsSlowDown] = useState(false);
   const { scene } = useGLTF("/dog.glb");
   const ref = useRef();
   let spin;
-  console.log(isSlowDown);
+  // console.log(isSlowDown);
 
   setTimeout(() => {
     setIsSlowDown(true);
-    console.log(isSlowDown);
-  }, [830]);
-  spin = isSlowDown ? 0.001 : 0.4;
+    // console.log(isSlowDown);
+  }, [800]);
+  spin = isSlowDown ? 0.01 : 0.4;
   useFrame(() => (ref.current.rotation.y += spin));
   return (
     <mesh position={position} ref={ref}>
@@ -76,3 +54,26 @@ const Scene = ({ speed }) => {
     </>
   );
 };
+
+export const Dog = () => {
+  return (
+    <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
+      <ambientLight intensity={0.7} />
+      <PresentationControls
+        speed={1.5}
+        global
+        polar={[-Math.PI / 4, Math.PI / 4, 0]}
+      >
+        <group
+          position={[0, 1, 0]}
+          rotation-z={0}
+          rotation-y={-0.8}
+          rotation-x={0.8}
+        >
+          <Scene />
+        </group>
+      </PresentationControls>
+    </Canvas>
+  );
+};
+
