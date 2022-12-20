@@ -1,12 +1,14 @@
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { useGLTF, PresentationControls } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
-import { useState, useRef, useMemo, Suspense } from "react";
+import { useState, useRef, useMemo, Suspense, useEffect } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 import { Card } from "../components/Ui/Card";
 import { LoadingSpinner } from "../components/Ui/LoadingSpinner";
+import { useCallback } from "react";
 
 //this file should be in dog folder in components
 //but it keep throwing error cuz the file not found so i had to move it here
@@ -36,20 +38,31 @@ export const Dog = () => {
 
 const Box = ({ position }) => {
   const [isSlowDown, setIsSlowDown] = useState(false);
-  const { scene } = useGLTF("/dog.glb");
+  const [isSlow, setIsSlow] = useState(false);
+  const [speed, setSpeed] = useState(0.6);
+  const obj = useLoader(GLTFLoader, "/dog.glb");
+
   const ref = useRef();
-  let spin;
   // console.log(isSlowDown);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsSlowDown(true);
+      setSpeed(0.2);
+      // console.log(isSlowDown);
+    }, [500]);
+  }, []);
 
   setTimeout(() => {
     setIsSlowDown(true);
+    setSpeed(0.01);
     // console.log(isSlowDown);
-  }, [800]);
-  spin = isSlowDown ? 0.01 : 0.4;
-  useFrame(() => (ref.current.rotation.y += spin));
+  }, [1000]);
+
+
+  useFrame(() => (ref.current.rotation.y += speed));
   return (
     <mesh position={position} ref={ref}>
-      <primitive object={scene} scale={0.4} />
+      <primitive object={obj.scene} scale={0.4} />
     </mesh>
   );
 };
