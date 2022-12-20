@@ -6,8 +6,6 @@ import {
   Outlet,
   useNavigate,
 } from "react-router-dom";
-
-import { Dog } from "../components/Dog/Dog";
 import { ContactList } from "../components/Contact/ContactList";
 import { Card } from "../components/Ui/Card";
 import { LoadingSpinner } from "../components/Ui/LoadingSpinner";
