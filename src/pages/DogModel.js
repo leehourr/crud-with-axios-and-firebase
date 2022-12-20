@@ -1,5 +1,4 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import { Dog } from "../components/Dog/Dog";
 import github from "../assets/github.svg";
 
@@ -13,7 +12,7 @@ const DogModel = () => {
             Simple <span className="text-cyan-500">contact app</span> (crud)
             built with <span className="text-cyan-500">react js</span>
           </div>
-          <button className="bg-cyan-600 rounded-lg p-2 text-center self-center mt-4 hover:bg-cyan-800 active:bg-cyan-800 uppercase">
+          <button className="bg-cyan-700 rounded-lg py-2 px-4 text-center self-center mt-4 hover:bg-cyan-900 active:bg-cyan-900 uppercase">
             Get started
           </button>
           <a
