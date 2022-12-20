@@ -1,23 +1,34 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, PresentationControls } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
-import { useEffect, useRef, useMemo } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
 
+let speed = true;
+
 export const Dog = () => {
-  useEffect(() => {}, []);
+  const [speedUp, setSpeedUp] = useState(true);
+
+  setTimeout(() => {
+    setSpeedUp(false);
+  }, [820]);
+   speed= speedUp;
   return (
     <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
-      <ambientLight intensity={0.65} />
-      <PresentationControls speed={1.5} global polar={[-Math.PI / 4,Math.PI / 4,0 ]}>
+      <ambientLight intensity={0.7} />
+      <PresentationControls
+        speed={1.5}
+        global
+        polar={[-Math.PI / 4, Math.PI / 4, 0]}
+      >
         <group
           position={[0, 1, 0]}
           rotation-z={0}
           rotation-y={-0.8}
           rotation-x={0.8}
         >
-          <Scene />
+          <Scene speed={speedUp} />
         </group>
       </PresentationControls>
     </Canvas>
@@ -27,7 +38,9 @@ export const Dog = () => {
 const Box = ({ position }) => {
   const { scene } = useGLTF("/dog.glb");
   const ref = useRef();
-  useFrame(() => (ref.current.rotation.y += 0.01));
+  let spin;
+  spin = speed ? 0.4 : 0.01;
+  useFrame(() => (ref.current.rotation.y += spin));
 
   return (
     <mesh position={position} ref={ref}>
@@ -55,12 +68,12 @@ const Inspector = ({ responsiveness = 20, children }) => {
   );
 };
 
-const Scene = () => {
+const Scene = ({ speed }) => {
   return (
     <>
       <color attach="background" args={["black"]} />
       <Inspector>
-        <Box />
+        <Box speed={speed} />
       </Inspector>
     </>
   );

@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import { Dog } from "../components/dog/Dog";
+import { Dog } from "../components/Dog/Dog";
 import { ContactList } from "../components/Contact/ContactList";
 import { Card } from "../components/Ui/Card";
 import { LoadingSpinner } from "../components/Ui/LoadingSpinner";
@@ -76,7 +76,6 @@ export const AllContacts = () => {
   //console.log(loaderData);
   return (
     <div className="min-h-screen flex items-center align-text-top flex-col bg-zinc-800 py-6 sm:py-10  transition-all duration-75 ">
-      <Dog />
       <div className="max-w-fit space-y-8 p-0">
         <h2 className=" mb-6 sm:mb-10 text-center text-3xl font-extrabold text-cyan-400 cursor-pointer">
           CONTACT

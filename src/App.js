@@ -7,11 +7,12 @@ import { EditContacts, action as updateContact } from "./pages/EditContacts";
 import { action as deleteContact } from "./pages/removeContact";
 // import { RootLayout } from "./pages/RootLayout";
 import { PageNotFound } from "./pages/PageNotFound";
+import DogModel from "./pages/DogModel";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AllContacts />,
+    element: <DogModel />,
     loader: getAllContacts,
     // errorElement: <ErrorPage />,
     children: [
