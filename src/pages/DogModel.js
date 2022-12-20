@@ -1,5 +1,5 @@
 import React from "react";
-import Dog  from "../components/Dog/Dog";
+import {Dog } from "../components/Dog/Dog";
 import github from "../assets/github.svg";
 
 const DogModel = () => {

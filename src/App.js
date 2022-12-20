@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { AllContacts, loader as getAllContacts } from "./pages/AllContacts";
+import { loader as getAllContacts } from "./pages/AllContacts";
 import { AddContact, action as addContact } from "./pages/AddContact";
 import { EditContacts, action as updateContact } from "./pages/EditContacts";
 import { action as deleteContact } from "./pages/removeContact";
