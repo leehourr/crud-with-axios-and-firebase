@@ -1,5 +1,5 @@
 import React from "react";
-import { Dog } from "../components/Dog/Dog";
+import { Dog } from "./Dog";
 import github from "../assets/github.svg";
 import { Canvas } from "@react-three/fiber";
 
