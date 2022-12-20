@@ -1,64 +1,18 @@
-import { useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { useGLTF, PresentationControls } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, Suspense } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
 
+import { Card } from "../components/Ui/Card";
+import { LoadingSpinner } from "../components/Ui/LoadingSpinner";
+
+//this file should be in dog folder in components
+//but it keep throwing error cuz the file not found so i had to move it here
 export const Dog = () => {
-
-  const Box = ({ position }) => {
-    const [isSlowDown, setIsSlowDown] = useState(false);
-    const { scene } = useGLTF("/dog.glb");
-    const ref = useRef();
-    let spin;
-    // console.log(isSlowDown);
-
-    setTimeout(() => {
-      setIsSlowDown(true);
-      // console.log(isSlowDown);
-    }, [800]);
-    spin = isSlowDown ? 0.01 : 0.4;
-    useFrame(() => (ref.current.rotation.y += spin));
-    return (
-      <mesh position={position} ref={ref}>
-        <primitive object={scene} scale={0.4} />
-      </mesh>
-    );
-  };
-
-  const Inspector = ({ responsiveness = 20, children }) => {
-    const { size } = useThree();
-    const euler = useMemo(() => new THREE.Euler(), []);
-    const [spring, set] = useSpring(() => ({
-      rotation: [0, 0, 0],
-    }));
-    const bind = useDrag(({ delta: [dx, dy] }) => {
-      euler.y += (dx / size.width) * responsiveness;
-      // euler.x += (dy / size.width) * responsiveness;
-      //euler.x = THREE.MathUtils.clamp(euler.x, -Math.PI / 2, Math.PI / 2);
-      set({ rotation: euler.toArray().slice(0, 3) });
-    });
-    return (
-      <a.group {...bind()} {...spring}>
-        {children}
-      </a.group>
-    );
-  };
-
-  const Scene = ({ speed }) => {
-    return (
-      <>
-        <color attach="background" args={["black"]} />
-        <Inspector>
-          <Box speed={speed} />
-        </Inspector>
-      </>
-    );
-  };
-
   return (
-    <>
+    <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
       <ambientLight intensity={0.7} />
       <PresentationControls
         speed={1.5}
@@ -71,9 +25,61 @@ export const Dog = () => {
           rotation-y={-0.8}
           rotation-x={0.8}
         >
-          <Scene />
+          <Suspense fallback={null}>
+            <Scene />
+          </Suspense>
         </group>
       </PresentationControls>
+    </Canvas>
+  );
+};
+
+const Box = ({ position }) => {
+  const [isSlowDown, setIsSlowDown] = useState(false);
+  const { scene } = useGLTF("/dog.glb");
+  const ref = useRef();
+  let spin;
+  // console.log(isSlowDown);
+
+  setTimeout(() => {
+    setIsSlowDown(true);
+    // console.log(isSlowDown);
+  }, [800]);
+  spin = isSlowDown ? 0.01 : 0.4;
+  useFrame(() => (ref.current.rotation.y += spin));
+  return (
+    <mesh position={position} ref={ref}>
+      <primitive object={scene} scale={0.4} />
+    </mesh>
+  );
+};
+
+const Inspector = ({ responsiveness = 20, children }) => {
+  const { size } = useThree();
+  const euler = useMemo(() => new THREE.Euler(), []);
+  const [spring, set] = useSpring(() => ({
+    rotation: [0, 0, 0],
+  }));
+  const bind = useDrag(({ delta: [dx, dy] }) => {
+    euler.y += (dx / size.width) * responsiveness;
+    // euler.x += (dy / size.width) * responsiveness;
+    //euler.x = THREE.MathUtils.clamp(euler.x, -Math.PI / 2, Math.PI / 2);
+    set({ rotation: euler.toArray().slice(0, 3) });
+  });
+  return (
+    <a.group {...bind()} {...spring}>
+      {children}
+    </a.group>
+  );
+};
+
+const Scene = ({ speed }) => {
+  return (
+    <>
+      <color attach="background" args={["black"]} />
+      <Inspector>
+        <Box speed={speed} />
+      </Inspector>
     </>
   );
 };
