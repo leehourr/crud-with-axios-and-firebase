@@ -1,4 +1,4 @@
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import {  useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, PresentationControls } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
 import { useState, useRef, useMemo } from "react";
@@ -57,7 +57,7 @@ const Scene = ({ speed }) => {
 
 export const Dog = () => {
   return (
-    <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
+    <>
       <ambientLight intensity={0.7} />
       <PresentationControls
         speed={1.5}
@@ -73,7 +73,6 @@ export const Dog = () => {
           <Scene />
         </group>
       </PresentationControls>
-    </Canvas>
+    </>
   );
 };
-
