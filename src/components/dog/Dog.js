@@ -5,15 +5,7 @@ import { useState, useRef, useMemo } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
 
-let speed = true;
-
 export const Dog = () => {
-  const [speedUp, setSpeedUp] = useState(true);
-
-  setTimeout(() => {
-    setSpeedUp(false);
-  }, [820]);
-   speed= speedUp;
   return (
     <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
       <ambientLight intensity={0.7} />
@@ -28,7 +20,7 @@ export const Dog = () => {
           rotation-y={-0.8}
           rotation-x={0.8}
         >
-          <Scene speed={speedUp} />
+          <Scene />
         </group>
       </PresentationControls>
     </Canvas>
@@ -36,12 +28,18 @@ export const Dog = () => {
 };
 
 const Box = ({ position }) => {
+  const [isSlowDown, setIsSlowDown] = useState(false);
   const { scene } = useGLTF("/dog.glb");
   const ref = useRef();
   let spin;
-  spin = speed ? 0.4 : 0.01;
-  useFrame(() => (ref.current.rotation.y += spin));
+  console.log(isSlowDown);
 
+  setTimeout(() => {
+    setIsSlowDown(true);
+    console.log(isSlowDown);
+  }, [830]);
+  spin = isSlowDown ? 0.001 : 0.4;
+  useFrame(() => (ref.current.rotation.y += spin));
   return (
     <mesh position={position} ref={ref}>
       <primitive object={scene} scale={0.4} />
