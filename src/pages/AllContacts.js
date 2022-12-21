@@ -79,7 +79,7 @@ export const AllContacts = () => {
           CONTACT
         </h2>
       </div>
-      <div className="flex max-w-lg w-full flex-row justify-between space-x-14">
+      <div className="flex max-w-lg w-full flex-row items-center justify-between space-x-14">
         <input
           type="text"
           id="search"
