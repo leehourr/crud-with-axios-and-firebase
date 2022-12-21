@@ -25,7 +25,7 @@ export const AllContacts = () => {
 
   const addFormHandler = () => {
     // console.log("form opened");
-    navigate("/add-contact");
+    navigate("/home/add-contact");
   };
 
   const searchHandler = async (e) => {
@@ -73,7 +73,7 @@ export const AllContacts = () => {
 
   //console.log(loaderData);
   return (
-    <div className="min-h-screen flex items-center align-text-top flex-col bg-zinc-800 py-6 sm:py-10  transition-all duration-75 ">
+    <div className="min-h-screen flex items-center align-text-top flex-col bg-zinc-800 py-6 sm:py-10 mx-4 transition-all duration-75 ">
       <div className="max-w-fit space-y-8 p-0">
         <h2 className=" mb-6 sm:mb-10 text-center text-3xl font-extrabold text-cyan-400 cursor-pointer">
           CONTACT
@@ -86,7 +86,7 @@ export const AllContacts = () => {
           name="search"
           value={search}
           onChange={searchHandler}
-          className="w-full  nm-inset text-white placeholder-grey-400 text-sm sm:text-lg rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200 outline-none"
+          className="nm-inset text-white placeholder-grey-400 text-sm sm:text-lg rounded-lg block p-1.5 px-6 caret-cyan-500 border-b-[1px] border-b-transparent focus:border-b-cyan-600 focus:border-cyan-200 outline-none"
           placeholder="Search name"
         />
         <div className="text-cyan-200 border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 p-0.5 px-2 text-lg nm-flat-zinc-800 transition ease-in-out delay-150 duration-1000">

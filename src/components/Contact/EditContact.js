@@ -39,7 +39,7 @@ export const EditContact = ({ id, name, number, onClose }) => {
                 x
               </button>
             </div>
-            <Form method="post" action={`/edit/${id}&${name}&${number}`}>
+            <Form method="post" action={`/home/edit/${id}&${name}&${number}`}>
               <h2 className="block font-bold text-green-400 dark:text-green-400 ">
                 Edit contact
               </h2>
@@ -71,7 +71,7 @@ export const EditContact = ({ id, name, number, onClose }) => {
               <button
                 className="text-red-400 nm-flat-zinc-800 w-full mt-3.5 mx-auto border-solid rounded-lg border-transparent  hover:nm-inset-zinc-800 px-2 transition ease-in-out delay-150 duration-1000"
                 //  onClick={deleteContact}
-                formAction={`/remove/${id}`}
+                formAction={`/home/remove/${id}`}
               >
                 Delete
               </button>

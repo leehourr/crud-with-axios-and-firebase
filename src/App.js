@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { loader as getAllContacts } from "./pages/AllContacts";
+import { AllContacts, loader as getAllContacts } from "./pages/AllContacts";
 import { AddContact, action as addContact } from "./pages/AddContact";
 import { EditContacts, action as updateContact } from "./pages/EditContacts";
 import { action as deleteContact } from "./pages/removeContact";
@@ -13,8 +13,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <DogModel />,
-    loader: getAllContacts,
     // errorElement: <ErrorPage />,
+  },
+  {
+    path: "/Home",
+    element: <AllContacts />,
+    loader: getAllContacts,
     children: [
       {
         path: "add-contact",
@@ -27,11 +31,11 @@ const router = createBrowserRouter([
         action: updateContact,
         children: [],
       },
+      {
+        path: "remove/:id",
+        action: deleteContact,
+      },
     ],
-  },
-  {
-    path: "/remove/:id",
-    action: deleteContact,
   },
   {
     path: "/*",

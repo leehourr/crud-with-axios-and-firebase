@@ -1,8 +1,14 @@
 import React from "react";
 import github from "../assets/github.svg";
 import { Dog } from "./Dog";
+import { useNavigate } from "react-router-dom";
 
 const DogModel = () => {
+  const navigate = useNavigate();
+  const gotoHomePage = () => {
+    // console.log("form opened");
+    navigate("/home", { replace: true });
+  };
   return (
     <div className="flex flex-col items-center justify-center  relative w-screen h-full  text-white text-xl sm:text-3xl font-bold">
       <Dog />
@@ -12,7 +18,10 @@ const DogModel = () => {
             Simple <span className="text-cyan-500">contact app</span> (crud)
             built with <span className="text-cyan-500">react js</span>
           </div>
-          <button className="bg-cyan-700 rounded-lg py-2 px-4 text-center self-center mt-4 hover:bg-cyan-900 active:bg-cyan-900 uppercase">
+          <button
+            onClick={gotoHomePage}
+            className="bg-cyan-700 rounded-lg py-2 px-4 text-center self-center mt-4 hover:bg-cyan-900 active:bg-cyan-900 uppercase"
+          >
             Get started
           </button>
           <a

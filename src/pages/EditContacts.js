@@ -30,5 +30,5 @@ export const action = async ({ params, request }) => {
   const contact = { name, number };
   await updateContact(uid, contact);
 
-  return redirect("/");
+  return redirect("/home");
 };

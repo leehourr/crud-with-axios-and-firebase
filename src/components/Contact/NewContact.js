@@ -22,7 +22,7 @@ export const NewContact = ({ onClose }) => {
 
     fetcher.submit(
       { name, number },
-      { method: "post", action: "/add-contact" }
+      { method: "post", action: "/home/add-contact" }
     );
   }
 
@@ -35,7 +35,7 @@ export const NewContact = ({ onClose }) => {
       {ReactDOM.createPortal(
         <Card
           className={
-            "absolute top-1/2 left-1/2 w-56  -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden flex flex-col justify-center    bg-zinc-800 p-6 rounded-lg"
+            "fixed top-1/2 left-1/2 w-56  -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden flex flex-col justify-center    bg-zinc-800 p-6 rounded-lg"
           }
         >
           <button

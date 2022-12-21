@@ -13,7 +13,7 @@ export const AddContact = ({ onClose }) => {
   // }
   const closeForm = () => {
     // console.log("asda");
-    navigate("/");
+    navigate("/home");
   };
 
   return <NewContact onClose={closeForm} />;
@@ -33,5 +33,5 @@ export const action = async ({ request }) => {
     top: window.innerHeight + 1000,
     behavior: "smooth",
   });
-  return redirect("/");
+  return redirect("/home");
 };

@@ -8,7 +8,7 @@ export const Contact = memo(({ id, name, number, onDelete, onEdit }) => {
   const updateHandler = (e) => {
     // e.preventDefault();
     // console.log(uName.trim());
-    navigate(`/edit/${id}&${name}&${number}`);
+    navigate(`/home/edit/${id}&${name}&${number}`);
   };
 
   return (

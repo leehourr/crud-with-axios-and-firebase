@@ -4,5 +4,5 @@ import { removeContact } from "../util/api";
 export const action = async ({ params }) => {
   //console.log(params.id);
    await removeContact(params.id);
-   return redirect("/");
+   return redirect("/home");
 };
