@@ -1,17 +1,19 @@
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { useGLTF, PresentationControls } from "@react-three/drei";
+import { PresentationControls, useGLTF } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
 import { useState, useRef, useMemo, Suspense, useEffect } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { Html, useProgress } from "@react-three/drei";
 
-import { Card } from "../components/Ui/Card";
-import { LoadingSpinner } from "../components/Ui/LoadingSpinner";
-import { useCallback } from "react";
-
+function Loader() {
+  const { progress } = useProgress();
+  return <Html center>{progress} % loaded</Html>;
+}
 //this file should be in dog folder in components
 //but it keep throwing error cuz the file not found so i had to move it here
+
 export const Dog = () => {
   return (
     <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
@@ -27,7 +29,7 @@ export const Dog = () => {
           rotation-y={-0.8}
           rotation-x={0.8}
         >
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loader />}>
             <Scene />
           </Suspense>
         </group>
@@ -37,27 +39,22 @@ export const Dog = () => {
 };
 
 const Box = ({ position }) => {
-  const [isSlowDown, setIsSlowDown] = useState(false);
-  const [isSlow, setIsSlow] = useState(false);
   const [speed, setSpeed] = useState(0.6);
-  const obj = useLoader(GLTFLoader, "/dog.glb");
+  const obj = useGLTF("/dog.glb");
 
   const ref = useRef();
   // console.log(isSlowDown);
   useEffect(() => {
     setTimeout(() => {
-      setIsSlowDown(true);
       setSpeed(0.2);
       // console.log(isSlowDown);
     }, [500]);
   }, []);
 
   setTimeout(() => {
-    setIsSlowDown(true);
     setSpeed(0.01);
     // console.log(isSlowDown);
   }, [1000]);
-
 
   useFrame(() => (ref.current.rotation.y += speed));
   return (
@@ -66,6 +63,8 @@ const Box = ({ position }) => {
     </mesh>
   );
 };
+
+useGLTF.preload("/dog.glb");
 
 const Inspector = ({ responsiveness = 20, children }) => {
   const { size } = useThree();
