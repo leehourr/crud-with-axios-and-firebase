@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { PresentationControls, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
 import { useState, useRef, useMemo, Suspense, useEffect } from "react";
 import { useDrag } from "react-use-gesture";
@@ -17,25 +17,27 @@ export const Dog = () => {
   return (
     <Canvas style={{ text: "top", width: "100%", height: "100vh" }}>
       <ambientLight intensity={0.7} />
-      <PresentationControls
+      {/* <PresentationControls
         speed={1.5}
         global
         polar={[-Math.PI / 4, Math.PI / 4, 0]}
+      > */}
+      <group
+        position={[0, 1, 0]}
+        rotation-z={0}
+        rotation-y={-0.8}
+        rotation-x={0.8}
       >
-        <group
-          position={[0, 1, 0]}
-          rotation-z={0}
-          rotation-y={-0.8}
-          rotation-x={0.8}
-        >
-          <Suspense fallback={<Loader />}>
-            <Scene />
-          </Suspense>
-        </group>
-      </PresentationControls>
+        <Suspense fallback={<Loader />}>
+          <Scene />
+        </Suspense>
+      </group>
+      {/* </PresentationControls> */}
     </Canvas>
   );
 };
+
+useGLTF.preload("/dog.glb");
 
 const Box = ({ position }) => {
   const [speed, setSpeed] = useState(0.6);
@@ -62,8 +64,6 @@ const Box = ({ position }) => {
     </mesh>
   );
 };
-
-useGLTF.preload("/dog.glb");
 
 const Inspector = ({ responsiveness = 20, children }) => {
   const { size } = useThree();
