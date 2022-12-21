@@ -1,21 +1,11 @@
-import React,{useState} from "react";
+import React from "react";
 import { Dog } from "./Dog";
 import github from "../assets/github.svg";
-import { Card } from "../components/Ui/Card";
-import { LoadingSpinner } from "../components/Ui/LoadingSpinner";
 
 const DogModel = () => {
-  const [isLoading, setIsLoading] = useState(true);
   
-  setTimeout(() => {
-    setIsLoading(false);
-  }, [700]);
+
   
-  let content = (
-    <Card className={"text-white top-full self-center h-[100vh] "}>
-      <LoadingSpinner />
-    </Card>
-  );
   return (
     <div className="flex flex-col items-center justify-center  relative w-screen h-full  text-white text-xl sm:text-3xl font-bold">
       <Dog/>

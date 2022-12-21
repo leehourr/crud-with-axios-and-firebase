@@ -1,10 +1,9 @@
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { PresentationControls, useGLTF } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
 import { useState, useRef, useMemo, Suspense, useEffect } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Html, useProgress } from "@react-three/drei";
 
 function Loader() {
