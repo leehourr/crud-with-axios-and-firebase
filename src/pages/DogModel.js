@@ -1,14 +1,11 @@
 import React from "react";
-import { Dog } from "./Dog";
 import github from "../assets/github.svg";
+import { Dog } from "./Dog";
 
 const DogModel = () => {
-  
-
-  
   return (
     <div className="flex flex-col items-center justify-center  relative w-screen h-full  text-white text-xl sm:text-3xl font-bold">
-      <Dog/>
+      <Dog />
       <div className="absolute w-full h-[44%] flex flex-col items-center justify-between px-4 top-[55%] left-[50%] -translate-x-[50%]  text-center">
         <div>
           <div>

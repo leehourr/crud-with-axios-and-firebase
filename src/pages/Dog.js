@@ -5,6 +5,8 @@ import { useState, useRef, useMemo, Suspense, useEffect } from "react";
 import { useDrag } from "react-use-gesture";
 import * as THREE from "three";
 import { Html, useProgress } from "@react-three/drei";
+useGLTF.preload("/dog.glb");
+
 
 function Loader() {
   const { progress } = useProgress();
@@ -37,10 +39,9 @@ export const Dog = () => {
   );
 };
 
-useGLTF.preload("/dog.glb");
 
 const Box = ({ position }) => {
-  const [speed, setSpeed] = useState(0.6);
+  const [speed, setSpeed] = useState(1);
   const obj = useGLTF("/dog.glb");
 
   const ref = useRef();
@@ -49,7 +50,7 @@ const Box = ({ position }) => {
     setTimeout(() => {
       setSpeed(0.2);
       // console.log(isSlowDown);
-    }, [500]);
+    }, [400]);
   }, []);
 
   setTimeout(() => {
